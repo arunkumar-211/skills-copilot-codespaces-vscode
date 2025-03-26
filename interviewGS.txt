@@ -1,0 +1,152 @@
+================================ Goldman Sachs Interviews =============================================
+
+Interview 1 :-
+
+Round 1 :-
+
+1) Self introduce yourself with your latest project ?
+	approach :-
+		qualification, experience, project
+		
+2) Return the most frequently used ip address and test it using the Java code ?
+	approach :-
+		1. Get the string from the log
+		2. Split it based on " - "
+		3. Extract the ip address
+		4. Check for the frequent one and maintain the count
+		5. Return the ip address with most count.
+
+
+Round 2:-
+1) Self introduce yourself with your latest project ?
+	- qualification, experience, about four projects
+2) Reason for career gap ?
+	- java course
+3) Latest project explaination on the assigned role.
+	- msales dth application with L3 support.
+4) for given all positive numbers with a array and total. Finally return the indices which adds to the total.
+array = 1 2 3 4 5 
+
+total = 5
+
+answer = 1 2 
+
+Appproaches :-
+
+Algorithms :-
+ 1) approach 1 :-
+	for(0->4)=>i
+		for(j->4-1)=>i+1=j
+			0->{0,3}=5
+			1->{1,2}=5
+			2->
+			3->
+			
+			3-0=3
+			3-1=2
+			
+2) approach 2 :-
+for(0->3)
+	list = list.stream().filter(o->comp() == total).collect(tolist());
+	 
+3)approach 3 :-
+	eliminate the total and work on the total by subtracting it by saving the present and next indices.
+
+4) real solution :-
+public class TwoSum {
+    public static int[] findIndices(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
+        }
+        return new int[] {}; // Return an empty array if no solution is found
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {2, 7, 11, 15};
+        int target = 9;
+        int[] result = findIndices(nums, target);
+        if (result.length == 2) {
+            System.out.println("Indices: " + result[0] + ", " + result[1]);
+        } else {
+            System.out.println("No solution found.");
+        }
+    }
+}
+
+
+5)To support for the following situations :-
+	1) email comes from the trader that server is not hitting, client that customer is not able to attend.
+		Answer :-
+			
+			1) discuss with the teams
+			2) consult the experts.
+			3) assess the previously arrived result.
+			4) solve without disturbing any files.
+			
+		
+6) To support if an attempt is made to hit the server and button is not working.
+	Answer:- 
+		1) Tap check
+		2) DOM check
+		3) Sanity check for client error.
+		4) check with the availability, performance, capacity, security for server error.
+		
+			
+Interview 2 :-
+ 
+Round 1:-
+	1. Interviewer Introduction :-
+		- Name : Arun G K  
+		- product support at Goldman Sachs for internal projects.
+		- handles the credit part.
+		- involved in troubleshooting.					
+	2. Self introduction with recent project including roles and responsiblities :-
+		1. qualification, experience, about my recent project : Msales DTH Application- design, analysis, coding, implementations
+	3. Explain interface ? 
+		- It is the key word used to implement the multiple inheritance.
+		- It is used to achieve 100% abstraction.
+		- It may contain static and default methods.
+		- It does not have object class inherited in it.
+		- It can't be instantiated.
+	4. Does abstract class exists without any methods ?
+		- Yes.
+	5. Explain functional interface ?
+		- It is used to use one and only abstracted method.
+		- annotations can be included.
+		- examples are the Runnable and Comparable interfaces.
+	6. Explain abstract class ?
+		- It is used to achieve multiple inheritance in conjunction with two interfaces.
+		- It contains abstract methods and concrete methods.
+		- It is used to achieve abstraction even for less than 100%.
+	7. Which is the recent ticket you have worked on ?
+		- Swagger documentation ticket.
+	8. Problem on strings :- get the result for the following strings, "aaa"->a3, "aaabb"->a3b2, "aabbccaa"->a2b2c2a2
+		My approach 1 : using maps
+		My approach 2 : using strings
+		Optimized and real approach 3 : using string builder
+		public class CharacterCount {
+    public static void main(String[] args) {
+        String input = "aaabbbcccaa";
+        StringBuilder output = new StringBuilder();
+
+        int count = 1;
+        for (int i = 1; i < input.length(); i++) {
+            if (input.charAt(i) == input.charAt(i - 1)) {
+                count++;
+            } else {
+                output.append(input.charAt(i - 1)).append(count);
+                count = 1;
+            }
+        }
+        // Append the last character and its count
+        output.append(input.charAt(input.length() - 1)).append(count);
+
+        System.out.println(output.toString());
+    }
+}
+			

@@ -1,0 +1,55 @@
+Datasets :-
+	1. Generate and insert 100 datasets for Column Name Data Type Description employee_id INT (PK) Unique identifier for each
+employee first_name VARCHAR(50) Employee's first name last_name VARCHAR(50)
+Employee's last name department_id INT (FK) Department to which the employee
+belongs hire_date DATE Date of hire salary DECIMAL(10,2) Employee's salary in .csv format.
+
+2. Generate and insert 10 datasets for Column Name Data Type Description department_id INT (PK) Unique identifier for each
+department department_name VARCHAR(100) Name of the department manager_id
+INT (FK) Manager (employee) for the department in .csv format.
+
+3. Generate and insert 10 datasets for Column Name Data Type Description project_id INT (PK) Unique identifier for each
+project project_name VARCHAR(100) Name of the project start_date DATE Start
+date of the project end_date DATE End date of the project in .csv format.
+
+
+
+---------------------------------------
+1. Write a query to fetch the names of employees and their department name.
+	
+
+2. Find the total hours logged by each employee across all projects.
+3. Retrieve the department name and count of employees in each department.
+4. Identify employees who work on more than 2 projects.
+5. Write a query to find employees who do not work on any project.
+
+
+-- --------------- SOLUTION ----------------- 
+-- 1. Query to fetch the names of employees and their department name
+Select employees.first_name, employees.last_name, departments.department_name from employees
+inner join departments on employees.department_id = departments.department_id;
+ 
+-- 2.  Total hours logged by each employee across all projects
+select * from Employees;
+Select employees.first_name, employees.last_name, Employee_Projects.hours_logged from employees
+inner join Employee_Projects on employees.employee_id = Employee_Projects.employee_id;
+ 
+-- 3. Department name and count of employees in each department
+Select d.department_name, count(e.department_id) as emplyoee_count
+from departments d
+left join employees e on e.department_id = d.department_id
+group by d.department_id, d.department_name;
+ 
+-- 4. Identify employees who work on more than 2 projects
+Select p.employee_id, e.first_name, e.last_name from employee_projects p
+left join employees e on e.employee_id = p.employee_id
+group by employee_id
+having count(project_id) > 2;
+ 
+-- 5.  query to find employees who do not work on any project
+Select employee_id, first_name, last_name from employees
+where employee_id NOT IN (Select employee_id from employee_projects);
+-- alternative approach
+SELECT a.employee_id, a.first_name, a.last_name from employees a
+left join employee_projects b on a.employee_id = b.employee_id
+where b.employee_id is null;

@@ -34,7 +34,7 @@ class FirstIndices {
 
     public static void main(String[] strs) {
 
-       int array[] = new int[]{2,3,4,5,6,7};
+       int array[] = new int[]{4,3,4,5,6,7};
 
        int total = 7;
 
